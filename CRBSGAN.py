@@ -116,7 +116,7 @@ class classifier(nn.Module):
         return self.softmax(x), F.log_softmax(x, dim=1)
 
 
-class MarginGAN(object):
+class CRBSGAN(object):
     def __init__(self, args):
         # parameters
         self.epoch = args.epoch
