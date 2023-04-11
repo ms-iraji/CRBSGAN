@@ -10,7 +10,7 @@ from dataloader import dataloader
 import torchvision.transforms as transforms
 import torchvision
 transform = transforms.Compose([transforms.RandomHorizontalFlip(), 
-                                transforms.RandomAffine(0, (1/8,0))]) # max horizontal shift by 4
+                                transforms.RandomAffine(0, (1/8,0))]) 
 
 def nll_loss_neg(y_pred, y_true):
     out = torch.sum(y_true * y_pred, dim=1)
@@ -24,10 +24,9 @@ def nll_loss_neg2(y_pred, y_true):
 l2loss = nn.MSELoss()
 
 
-# batch_size * input_dim => batch_size * output_dim * input_size * input_size
+
 class generator(nn.Module):
-    # Network Architecture is exactly same as in infoGAN (https://arxiv.org/abs/1606.03657)
-    # Architecture : FC1024_BR-FC7x7x128_BR-(64)4dc2s_BR-(1)4dc2s_S
+
     def __init__(self, input_dim=100, output_dim=1, input_size=32):
         super(generator, self).__init__()
         self.input_dim = input_dim
@@ -59,10 +58,9 @@ class generator(nn.Module):
         return x
 
 
-# batch_size * input_dim * input_size * input_size => batch_size * output_dim
+
 class discriminator(nn.Module):
-    # Network Architecture is exactly same as in infoGAN (https://arxiv.org/abs/1606.03657)
-    # Architecture : (64)4c2s-(128)4c2s_BL-FC1024_BL-FC1_S
+
     def __init__(self, input_dim=1, output_dim=1, input_size=32):
         super(discriminator, self).__init__()
         self.input_dim = input_dim
@@ -93,7 +91,7 @@ class discriminator(nn.Module):
         return x
 
 
-# batch_size * 1 * 28 * 28 => batch_size * 10
+
 class classifier(nn.Module):
     def __init__(self):
         super(classifier, self).__init__()
@@ -118,7 +116,7 @@ class classifier(nn.Module):
 
 class CRBSGAN(object):
     def __init__(self, args):
-        # parameters
+
         self.epoch = args.epoch
         self.sample_num = 100
         self.batch_size = args.batch_size
@@ -133,10 +131,10 @@ class CRBSGAN(object):
         self.num_labels = args.num_labels
         self.index = args.index
         self.lrC = args.lrC
-        # load dataset
+
         self.labeled_loader, self.unlabeled_loader, self.test_loader = dataloader(self.dataset, self.input_size, self.batch_size, self.num_labels)
         data = self.labeled_loader.__iter__().__next__()[0]
-        # networks init
+
         self.G = generator(input_dim=self.z_dim, output_dim=data.shape[1], input_size=self.input_size)
         self.D = discriminator(input_dim=data.shape[1], output_dim=1, input_size=self.input_size)
         self.C = classifier()
@@ -158,7 +156,7 @@ class CRBSGAN(object):
         utils.print_network(self.C)
         print('-----------------------------------------------')
 
-        # fixed noise
+
         self.sample_z_ = torch.rand((self.batch_size, self.z_dim))
         if self.gpu_mode:
             self.sample_z_ = self.sample_z_.cuda()
@@ -273,7 +271,7 @@ class CRBSGAN(object):
 
                 T_x = transform(x_l)
                 C_labeledtprob,C_labeledt = self.C(T_x)
-
+                #pseudo-labeling+ consistency
                 C_label_wei = y_l
                 C_label_wei = C_label_wei.view(-1, 1)
                 mostLikelyProbs = np.asarray([C_labeledtprob[i, C_label_wei[i]].item() for  i in range(len(C_labeledtprob))])
@@ -337,7 +335,9 @@ class CRBSGAN(object):
                 T_x = transform(G_.detach())
                 D_faket = self.D(T_x)
                 L_D_fake1 = l2loss(D_fake , D_faket )
-
+                
+                
+                #Discriminator+ consistency
 
                 T_x = transform(x_l)
                 D_labeledt = self.D(T_x)
@@ -370,6 +370,7 @@ class CRBSGAN(object):
                 G_loss_D = self.BCE_loss(D_fake, self.y_real_)
 
 
+                #Generator+ consistency
 
                 L_gen = -l2loss(G_, G_T_z)
 
