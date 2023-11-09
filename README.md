@@ -37,7 +37,7 @@ Semi-supervised learning, which entails training a model with manually labeled i
 - Reduction in pseudo-label errors for low-confidence images
 - Theoretical analysis of empirical risk for bad semi-supervised generative adversarial networks
 
-## Installation
+## Installation and Usage
 
 To use the CRBSGAN algorithm, follow these steps:
 
@@ -46,9 +46,7 @@ To use the CRBSGAN algorithm, follow these steps:
 3. Configure the training parameters and dataset paths in the provided configuration file.
 4. Evaluate the trained model using `CRBSGAN.py`.
 
-## Usage
 
-run CRBSGAN.py
 ## Results
 
 The CRBSGAN algorithm has been evaluated on several benchmark datasets, including  MNIST, CIFAR-10, and SVHN. The experimental results demonstrate its effectiveness in reducing error rates compared to state-of-the-art methods. For detailed results, please refer to the [Results](#results) section in the paper.
