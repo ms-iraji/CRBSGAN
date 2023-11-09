@@ -1,4 +1,4 @@
-# CRBSGAN: Consistency-Regularized Bad Semi-Supervised Generative Adversarial Networks
+# Image Classification with Consistency-Regularized Bad Semi-Supervised Generative Adversarial Networks: A Visual Data Analysis and Synthesis
 
 This repository contains the implementation of the CRBSGAN (Consistency-Regularized Bad Semi-Supervised Generative Adversarial Networks) algorithm for image classification. The CRBSGAN algorithm aims to improve the performance of semi-supervised learning by addressing issues such as incorrect decision boundaries and wrong pseudo-labels for unlabeled images.
 
