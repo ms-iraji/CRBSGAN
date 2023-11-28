@@ -50,7 +50,6 @@ To use the CRBSGAN algorithm, follow these steps:
 ## Results
 
 The CRBSGAN algorithm has been evaluated on several benchmark datasets, including  MNIST, CIFAR-10, and SVHN. The experimental results demonstrate its effectiveness in reducing error rates compared to state-of-the-art methods. For detailed results, please refer to the [Results](#results) section in the paper.
-![Uploading image.png…]()
 
 
 ## Contributing
