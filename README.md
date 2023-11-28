@@ -28,7 +28,7 @@ This work was conducted by researchers from the Department of Computer Engineeri
 
 ## Abstract
 
-Semi-supervised learning, which entails training a model with manually labeled images and pseudo-labels for unlabeled images, has garnered considerable attention for its potential to improve classification performance. Nevertheless, incorrect decision boundaries of classifiers and wrong pseudo labels for beneficial unlabeled images below the confidence threshold increase the generalization error in semi-supervised learning. This study proposes a consistency-regularized bad generative adversarial network (CRBGAN) for semi-supervised learning. The proposed model comprises a discriminator, a bad generator, and a classifier that employs data augmentation and consistency regularization. Local image augmentation is created to compensate for data scarcity and boost bad generators. Moreover, label consistency regularization is considered for bad fake images, real labeled images, unlabeled images, and latent space for the discriminator and bad generator. In the adversarial game between the discriminator and the bad generator, capturing feature space is better learned under these conditions. Furthermore, local consistency regularization for good-augmented images applied to the classifier strengthens the bad generator in the generator-classifier adversarial game. The consistency-regularized bad generator produces informative fake images similar to the support vectors located near the correct classification boundary. In addition, the pseudo-label error is reduced for low-confidence unlabeled images used in training. The proposed method reduces the state-of-the-art error rate from 6.44 to 4.02 on CIFAR-10, 2.06 to 1.56 on MNIST, and 6.07 to 3.26 on SVHN using 4000, 3000, and 500 labeled training images, respectively. Experimental results and theoretical evidence indicate that the CRBGAN algorithm is more efficient than methods proposed in previous works. The source code is available at https://github.com/ms-iraji/CRBSGAN
+Semi-supervised learning, which entails training a model with manually labeled images and pseudo-labels for unlabeled images, has garnered considerable attention for its potential to improve classification performance. Nevertheless, incorrect decision boundaries of classifiers and wrong pseudo labels for beneficial unlabeled images below the confidence threshold increase the generalization error in semi-supervised learning. This study proposes a consistency-regularized bad generative adversarial network (CRBGAN) for semi-supervised learning. The proposed model comprises a discriminator, a bad generator, and a classifier that employs data augmentation and consistency regularization. Local image augmentation is created to compensate for data scarcity and boost bad generators. Moreover, label consistency regularization is considered for bad fake images, real labeled images, unlabeled images, and latent space for the discriminator and bad generator. In the adversarial game between the discriminator and the bad generator, capturing feature space is better learned under these conditions. Furthermore, local consistency regularization for good-augmented images applied to the classifier strengthens the bad generator in the generator-classifier adversarial game. The consistency-regularized bad generator produces informative fake images similar to the support vectors located near the correct classification boundary. In addition, the pseudo-label error is reduced for low-confidence unlabeled images used in training. The proposed method reduces the state-of-the-art error rate from 6.44 to 4.02 on CIFAR-10, 2.06 to 1.56 on MNIST, and 6.07 to 3.26 on SVHN using 4000, 3000, and 500 labeled training images, respectively. Furthermore, it achieves a reduction in the error rate on the CINIC-10 dataset from 19.38 to 15.32 when utilizing 1000 labeled images per class. Experimental results and theoretical evidence indicate that the CRBGAN algorithm is more efficient than methods proposed in previous works. The source code is available at https://github.com/ms-iraji/CRBSGAN
 ## Key Features
 - Visual data analysis
 - Consistency regularization for bad fake images
@@ -50,6 +50,24 @@ To use the CRBSGAN algorithm, follow these steps:
 ## Results
 
 The CRBSGAN algorithm has been evaluated on several benchmark datasets, including  MNIST, CIFAR-10, and SVHN. The experimental results demonstrate its effectiveness in reducing error rates compared to state-of-the-art methods. For detailed results, please refer to the [Results](#results) section in the paper.
+Table 4. Average error rate percentages for the CINIC-10 test data obtained from five runs
+Reference		Number Of labels
+	Model	CINIC-10 (700)	CINIC-10 (1000)
+[75]
+π model	29.66 ± 1.12	27.04 ± 0.85
+[37]
+TE	30.38 ± 1.01	27.35 ± 0.86
+[37]
+MT	28.41 ± 0.29	25.71 ± 0.12
+[48]
+ICT	25.81 ± 0.16	23.19 ± 0.21
+[42]
+DSSLDDR	29.35 ± 0.31	26.75 ± 0.24
+[42]
+DSSLDDR+MT	23.96 ± 0.42	21.81 ± 0.16
+[43]
+DNLL	22.11 ± 0.28	19.38 ± 0.17
+Current research	Consistency-Regularized bad GAN	17.28 ±0.19	15.32 ±0.14
 
 ## Contributing
 
