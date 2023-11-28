@@ -50,24 +50,8 @@ To use the CRBSGAN algorithm, follow these steps:
 ## Results
 
 The CRBSGAN algorithm has been evaluated on several benchmark datasets, including  MNIST, CIFAR-10, and SVHN. The experimental results demonstrate its effectiveness in reducing error rates compared to state-of-the-art methods. For detailed results, please refer to the [Results](#results) section in the paper.
-Table 4. Average error rate percentages for the CINIC-10 test data obtained from five runs
-Reference		Number Of labels
-	Model	CINIC-10 (700)	CINIC-10 (1000)
-[75]
-π model	29.66 ± 1.12	27.04 ± 0.85
-[37]
-TE	30.38 ± 1.01	27.35 ± 0.86
-[37]
-MT	28.41 ± 0.29	25.71 ± 0.12
-[48]
-ICT	25.81 ± 0.16	23.19 ± 0.21
-[42]
-DSSLDDR	29.35 ± 0.31	26.75 ± 0.24
-[42]
-DSSLDDR+MT	23.96 ± 0.42	21.81 ± 0.16
-[43]
-DNLL	22.11 ± 0.28	19.38 ± 0.17
-Current research	Consistency-Regularized bad GAN	17.28 ±0.19	15.32 ±0.14
+![Uploading image.png…]()
+
 
 ## Contributing
 
