@@ -33,10 +33,15 @@ Semi-supervised learning, which entails training a model with manually labeled i
 ##The key contributions of our work are as follows:
 
 1- We propose a novel framework that employs local consistency regularization to labeled, unlabeled, and latent data in three-player bad generative semi-supervised networks to improve their performance.
+
 2- A novel type of consistency regularization loss, termed local consistency regularization for bad fake images, is introduced. The consistent bad generator efficiently learns the feature space and generates more accurate bad images (i.e., more informative images) near the true decision boundary through local consistency regularization applied to the latent space of bad fake images.
-3- The local consistency regularization for good-augmented images with reliable labels applied to the classifier in the proposed framework, better adjusts the margin of the classifier for pseudo labels generated from fake images. This action strengthens the bad generator in the generator-classifier adversarial game. 
+
+3- The local consistency regularization for good-augmented images with reliable labels applied to the classifier in the proposed framework, better adjusts the margin of the classifier for pseudo labels generated from fake images. This action strengthens the bad generator in the generator-classifier adversarial game.
+
 4- We demonstrate that the applied consistency regularization improves the proposed bad generative semi-supervised model, reducing the consistency-regularized semi-supervised classifier error. Reducing incorrect pseudo-labels for unlabeled images, particularly for images below the class threshold probability, lessens model error and strengthens the generalization performance of the classifier.
+
 5- We provide a theoretical analysis of empirical risk for bad semi-supervised generative adversarial networks. 
+
 6- We demonstrate that a transformer-based discriminator provides a better signal to the bad generator in three-player bad semi-supervised generative adversarial networks.
 
 ## Key Features
