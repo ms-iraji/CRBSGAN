@@ -59,7 +59,7 @@ To use the CRBSGAN algorithm, follow these steps:
 1. Clone this repository to your local machine.
 2. Install the required dependencies by running `pip install -r requirements.txt`.
 3. Configure the training parameters and dataset paths in the provided configuration file.
-4. Run main-stl.ipynb from STL-10 folder in colab.
+4. Run `main-stl.ipynb` from STL-10 folder in colab.
 
 
 ## Results
